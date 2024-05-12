@@ -1,3 +1,5 @@
+// let avgFitnesstOfEachGenerationChart = [];
+
 // class EvolutionaryAlgorithm {
 //     static stepSize: number = 0.15;
 //     static noOfChildsToBeGenerated: number = 10;
@@ -37,7 +39,7 @@
 //             }
 
 //             const parentAndChildren: Individual[] = [...EvolutionaryAlgorithm.individuals, ...EvolutionaryAlgorithm.newIndividuals];
-//             this.sortIndividuals(parentAndChildren);
+//             parentAndChildren.sort((a, b) => b.fitness - a.fitness);
 //             EvolutionaryAlgorithm.selectedIndividuals = parentAndChildren.slice(0, EvolutionaryAlgorithm.noOfIndividualsToBeSelected);
 //             EvolutionaryAlgorithm.fittestIndividualsOfEachGeneration.push(EvolutionaryAlgorithm.selectedIndividuals[0]);
 //             EvolutionaryAlgorithm.avgFitnesstOfEachGeneration.push(this.calculateAverage(EvolutionaryAlgorithm.selectedIndividuals));
@@ -51,7 +53,8 @@
 //             EvolutionaryAlgorithm.newIndividuals = [];
 //         }
 
-//         console.log("Fittest indv of each gen " + EvolutionaryAlgorithm.fittestIndividualsOfEachGeneration);
+//         // console.log("Fittest indv of each gen " + EvolutionaryAlgorithm.fittestIndividualsOfEachGeneration);
+//         avgFitnesstOfEachGenerationChart = EvolutionaryAlgorithm.avgFitnesstOfEachGeneration;
 //         console.log("Avg fitness of each gen " + EvolutionaryAlgorithm.fittestIndividualsOfEachGeneration);
 
 //         // Write to file implementation goes here...

@@ -55,7 +55,7 @@ var RankBasedEvolutionaryAlgorithm = /** @class */ (function () {
             // Sort the combined array based on fitness
             parentAndChildren.sort(function (a, b) { return b.fitness - a.fitness; });
             // Select top individuals for the next generation
-            individuals = parentAndChildren.slice(NUMBER_OF_INDIVIDUALS_TO_BE_SELECTED, parentAndChildren.length);
+            individuals = parentAndChildren.slice(0, NUMBER_OF_INDIVIDUALS_TO_BE_SELECTED);
             fittestIndividualsOfEachGeneration.push(individuals[individuals.length - 1]);
             // Calculate and save the average fitness of the current generation
             avgFitnesstOfEachGeneration.push(this.calculateAverage(individuals));
@@ -66,8 +66,8 @@ var RankBasedEvolutionaryAlgorithm = /** @class */ (function () {
             }
             newIndividuals = [];
         }
-        console.log("Fittest indv of each Generation: ");
-        fittestIndividualsOfEachGeneration.forEach(function (fittestIndividual) { return console.log(fittestIndividual); });
+        // console.log("Fittest indv of each Generation: ");
+        // fittestIndividualsOfEachGeneration.forEach(fittestIndividual => console.log(fittestIndividual));
         console.log("*****************************************************");
         console.log("Avg fitness of each gen " + avgFitnesstOfEachGeneration);
     };

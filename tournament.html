@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolutionary Algorithm</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Placeholder for the graph -->
+    <canvas id="fitnessGraph" width="400" height="200"></canvas>
+    <!-- Button to run the algorithm -->
+    <button id="runButton">Run Algorithm</button>
+
+    <script src="tournament-based.js"></script>
+
+    <script>
+        // Variable to hold the reference to the chart instance
+        var fitnessChart;
+
+        // Function to update the fitness graph
+        function updateFitnessGraph(avgFitnessData) {
+            var ctx = document.getElementById('fitnessGraph').getContext('2d');
+            
+            // Destroy the existing chart if it exists
+            if (fitnessChart) {
+                fitnessChart.destroy();
+            }
+            
+            // Create a new chart
+            fitnessChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from(Array(avgFitnessData.length).keys()),
+                    datasets: [{
+                        label: 'Average Fitness',
+                        data: avgFitnessData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: false
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        // Function to run the algorithm
+        function runAlgorithm() {
+            // Clear previous data
+            avgFitnesstOfEachGeneration.length = 0;
+            fittestIndividualsOfEachGeneration.length = 0;
+
+            // Run the algorithm
+            tournamentBasedEvolutionaryAlgorithm.runAlgo();
+
+            // Update the fitness graph
+            updateFitnessGraph(avgFitnesstOfEachGeneration);
+        }
+
+        // Add event listener to the run button
+        document.getElementById('runButton').addEventListener('click', runAlgorithm);
+    </script>
+</body>
+</html>

@@ -62,7 +62,7 @@
 //             parentAndChildren.sort((a, b) => b.fitness - a.fitness);
 
 //             // Select top individuals for the next generation
-//             individuals = parentAndChildren.slice(NUMBER_OF_INDIVIDUALS_TO_BE_SELECTED, parentAndChildren.length);
+//             individuals = parentAndChildren.slice(0, NUMBER_OF_INDIVIDUALS_TO_BE_SELECTED);
 
 //             fittestIndividualsOfEachGeneration.push(individuals[individuals.length - 1]);
 
@@ -78,8 +78,8 @@
 //             newIndividuals = [];
 //         }
 
-//         console.log("Fittest indv of each Generation: ");
-//         fittestIndividualsOfEachGeneration.forEach(fittestIndividual => console.log(fittestIndividual));
+//         // console.log("Fittest indv of each Generation: ");
+//         // fittestIndividualsOfEachGeneration.forEach(fittestIndividual => console.log(fittestIndividual));
 
 //         console.log("*****************************************************");
 //         console.log("Avg fitness of each gen " + avgFitnesstOfEachGeneration);

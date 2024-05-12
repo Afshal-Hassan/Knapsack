@@ -7,6 +7,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+var avgFitnesstOfEachGenerationChart = [];
 var EvolutionaryAlgorithm = /** @class */ (function () {
     function EvolutionaryAlgorithm() {
     }
@@ -29,7 +30,7 @@ var EvolutionaryAlgorithm = /** @class */ (function () {
                 this.reproduceOneChild(individual1, individual2);
             }
             var parentAndChildren = __spreadArray(__spreadArray([], EvolutionaryAlgorithm.individuals, true), EvolutionaryAlgorithm.newIndividuals, true);
-            this.sortIndividuals(parentAndChildren);
+            parentAndChildren.sort(function (a, b) { return b.fitness - a.fitness; });
             EvolutionaryAlgorithm.selectedIndividuals = parentAndChildren.slice(0, EvolutionaryAlgorithm.noOfIndividualsToBeSelected);
             EvolutionaryAlgorithm.fittestIndividualsOfEachGeneration.push(EvolutionaryAlgorithm.selectedIndividuals[0]);
             EvolutionaryAlgorithm.avgFitnesstOfEachGeneration.push(this.calculateAverage(EvolutionaryAlgorithm.selectedIndividuals));
@@ -40,7 +41,8 @@ var EvolutionaryAlgorithm = /** @class */ (function () {
             EvolutionaryAlgorithm.individuals = EvolutionaryAlgorithm.selectedIndividuals;
             EvolutionaryAlgorithm.newIndividuals = [];
         }
-        console.log("Fittest indv of each gen " + EvolutionaryAlgorithm.fittestIndividualsOfEachGeneration);
+        // console.log("Fittest indv of each gen " + EvolutionaryAlgorithm.fittestIndividualsOfEachGeneration);
+        avgFitnesstOfEachGenerationChart = EvolutionaryAlgorithm.avgFitnesstOfEachGeneration;
         console.log("Avg fitness of each gen " + EvolutionaryAlgorithm.fittestIndividualsOfEachGeneration);
         // Write to file implementation goes here...
     };

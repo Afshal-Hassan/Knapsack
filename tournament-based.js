@@ -41,7 +41,7 @@ var TournamentBasedEvolutionaryAlgorithm = /** @class */ (function () {
                 this.reproduceOneChild(individual1, individual2);
             }
             var parentAndChildren = __spreadArray(__spreadArray([], individuals, true), newIndividuals, true);
-            this.sortIndividuals(parentAndChildren);
+            parentAndChildren.sort(function (a, b) { return b.fitness - a.fitness; });
             individuals = parentAndChildren.slice(0, NUMBER_OF_INDIVIDUALS_TO_BE_SELECTED);
             fittestIndividualsOfEachGeneration.push(individuals[individuals.length - 1]);
             avgFitnesstOfEachGeneration.push(this.calculateAverage(individuals));
@@ -51,8 +51,8 @@ var TournamentBasedEvolutionaryAlgorithm = /** @class */ (function () {
             }
             newIndividuals = [];
         }
-        console.log("Fittest indv of each Generation: ");
-        fittestIndividualsOfEachGeneration.forEach(function (fittestIndividual) { return console.log(fittestIndividual); });
+        // console.log("Fittest indv of each Generation: ");
+        // fittestIndividualsOfEachGeneration.forEach(fittestIndividual => console.log(fittestIndividual));
         console.log("\n\n*****************************************************");
         console.log("\nAvg fitness of each gen \n\n" + avgFitnesstOfEachGeneration);
     };
