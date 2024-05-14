@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Evolution Chart</title>
+    <link rel="stylesheet" href="./ea-with-all.css">
+    <!-- Include Chart.js from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./ea-with-all.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Evolution Algorithm</h1>
+        <p>Given Equation: 11x-7.59y</p>
+        <h3>Best Fitnesses</h3>
+        <ul id="list">
+
+        </ul>
+        <div id="canvas-div">
+
+            <canvas id="fitnessChart"></canvas>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+
+        const fitnessValues = evolutionAlgorithm(10, 100)
+        console.log(fitnessValues)
+
+        const generations = Array.from({ length: fitnessValues.length }, (_, index) => index);
+
+
+        // Chart configuration
+        const config = {
+            type: 'line',
+            data: {
+                labels: generations.map(gen => `Generation ${gen}`),
+                datasets: [{
+                    label: 'Fitness Values',
+                    backgroundColor: 'blue',
+                    borderColor: '#2f4d5c',
+                    borderWidth: 1,
+                    data: fitnessValues,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Generations"
+                        },
+                        type: 'category',
+                        labels: generations.map(gen => ` ${gen}`),
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Fitness Values',
+                        },
+                    }
+                }
+            },
+        };
+
+        const ctx = document.getElementById('fitnessChart').getContext('2d');
+        new Chart(ctx, config);
+
+        //
+        const list = document.getElementById('list')
+        let i = 1
+        var listItem = document.createElement('li')
+        listItem.textContent = `${i}. Best Fitness: ${fitnessValues[fitnessValues.length - 1]}`
+        list.appendChild(listItem)
+        i++
+
+
+    </script>
+</body>
+
+</html>

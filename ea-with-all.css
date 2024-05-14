@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgrey;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black 
+
+}
+#canvas-div{
+    padding: 0px;
+    height: 500px;
+    width: 700px;
+}
+canvas{
+    margin: 0px;
+    padding: 0px;
+}
+#list{
+    
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
